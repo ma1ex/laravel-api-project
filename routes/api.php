@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\BlogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,14 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
+/*Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
-});
+});*/
+
+// Для наглядности
+Route::resource('/blogs', 'BlogController')->only([
+    'index', 'show', 'store', 'update', 'destroy'
+]);
+
+// но лучше так
+//Route::apiResource('/blogs', 'BlogController');
